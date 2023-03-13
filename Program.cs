@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Kamalova_LR2B.Models;
+
 
 namespace Kamalova_LR2B
 {
@@ -6,6 +10,9 @@ namespace Kamalova_LR2B
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+           // string cs = Server = myServerAddress; Database = myDataBase; User Id = Chulpan15; Password = Chulpan15;
+            builder.Services.AddDbContext<AuthorsContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("AuthorsContext")));
 
             // Add services to the container.
 
