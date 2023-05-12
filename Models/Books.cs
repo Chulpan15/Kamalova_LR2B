@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Data.Sqlite;
 
 namespace Kamalova_LR2B.Models
 {
@@ -13,5 +14,17 @@ namespace Kamalova_LR2B.Models
         public List<Authors> Authors { get; set; }
         public int Year { get; set; }
 
+
+        public Books (int ID, string Title, string ShortDesc, int Year)
+        {
+            this.ID = ID;
+            this.Title = Title;
+            this.ShortDesc = ShortDesc;
+            this.Authors = Authors;
+            //this.Year = Year;
+        }
     }
+
+
+
 }

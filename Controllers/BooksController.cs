@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.Sqlite;
 using Kamalova_LR2B.Models;
 
 namespace Kamalova_LR2B.Controllers
@@ -14,6 +15,13 @@ namespace Kamalova_LR2B.Controllers
     public class BooksController : ControllerBase
     {
         private readonly AuthorsContext _context;
+
+        //Books[] Books = new Books[]
+        //{
+        //    new Books { ID = 1, Title = "Pride and Prejudice", Year = 1813, ShortDesc = "Romantic story"},
+        //    new Books { ID = 2, Title = "The Master and Margarita", Year = 1966, ShortDesc = "Fantastic and ironically philosophical"}
+
+        //};
 
         public BooksController(AuthorsContext context)
         {

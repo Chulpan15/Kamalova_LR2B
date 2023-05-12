@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.Sqlite;
 using Kamalova_LR2B.Models;
 
 namespace Kamalova_LR2B.Models
@@ -12,10 +13,10 @@ namespace Kamalova_LR2B.Models
         public AuthorsContext(DbContextOptions<AuthorsContext> options)
                 : base(options)
         {
-            Database.EnsureCreated(); // создаёт базу данных
+            Database.Migrate();
         }
 
-        public DbSet<Authors> Authors { get; set; } = default!;
-        public DbSet<Books> Books { get; set; } = default!;
+        public DbSet<Authors> Authors { get; set; }
+        public DbSet<Books> Books { get; set; }
     }
 }

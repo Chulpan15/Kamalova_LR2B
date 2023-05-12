@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.Sqlite;
 using Kamalova_LR2B.Models;
 
 namespace Kamalova_LR2B.Controllers
@@ -14,6 +15,13 @@ namespace Kamalova_LR2B.Controllers
     public class AuthorsController : ControllerBase
     {
         private readonly AuthorsContext _context;
+
+        //Authors[] Authors = new Authors[]
+        //    { 
+        //        new Authors { Id = 1, Surname = "Ostin", Name = "Jane", Yearbirth = 1775},
+        //        new Authors { Id = 2, Surname = "Bulgakov", Name = "Mihail", Yearbirth = 1891}
+        //    };
+
 
         public AuthorsController(AuthorsContext context)
         {
@@ -35,10 +43,10 @@ namespace Kamalova_LR2B.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Authors>> GetAuthors(int id)
         {
-          if (_context.Authors == null)
-          {
-              return NotFound();
-          }
+            if (_context.Authors == null)
+            {
+                return NotFound();
+            }
             var authors = await _context.Authors.FindAsync(id);
 
             if (authors == null)
