@@ -14,7 +14,7 @@ namespace Kamalova_LR2B.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly AuthorsContext _context;
+        private readonly LibraryContext _context;
 
         //Books[] Books = new Books[]
         //{
@@ -23,7 +23,7 @@ namespace Kamalova_LR2B.Controllers
 
         //};
 
-        public BooksController(AuthorsContext context)
+        public BooksController(LibraryContext context)
         {
             _context = context;
         }
@@ -97,7 +97,9 @@ namespace Kamalova_LR2B.Controllers
           {
               return Problem("Entity set 'AuthorsContext.Books'  is null.");
           }
-            _context.Books.Add(books);
+
+            var bookss = new Books(books.ID, books.Title, books.Author, books.ShortDesc, books.Year);
+            _context.Books.Add(bookss);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetBooks", new { id = books.ID }, books);

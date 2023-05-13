@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.Sqlite;
 using Kamalova_LR2B.Models;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Kamalova_LR2B.Controllers
 {
@@ -14,16 +15,16 @@ namespace Kamalova_LR2B.Controllers
     [ApiController]
     public class AuthorsController : ControllerBase
     {
-        private readonly AuthorsContext _context;
+        private readonly LibraryContext _context;
 
         //Authors[] Authors = new Authors[]
-        //    { 
+        //    {
         //        new Authors { Id = 1, Surname = "Ostin", Name = "Jane", Yearbirth = 1775},
         //        new Authors { Id = 2, Surname = "Bulgakov", Name = "Mihail", Yearbirth = 1891}
         //    };
 
 
-        public AuthorsController(AuthorsContext context)
+        public AuthorsController(LibraryContext context)
         {
             _context = context;
         }
@@ -95,9 +96,10 @@ namespace Kamalova_LR2B.Controllers
         {
           if (_context.Authors == null)
           {
-              return Problem("Entity set 'AuthorsContext.Authors'  is null.");
-          }
-            _context.Authors.Add(authors);
+              return Problem("Entity set 'LibraryContext.Authors'  is null.");
+            }
+            var authorss = new Authors(authors.Id, authors.Surname, authors.Name, authors.Yearbirth);
+            _context.Authors.Add(authorss);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAuthors", new { id = authors.Id }, authors);

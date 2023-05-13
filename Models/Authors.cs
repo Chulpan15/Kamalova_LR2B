@@ -12,7 +12,12 @@ namespace Kamalova_LR2B.Models
         public string Surname { set; get; }
         public string Name { set; get; }
         public int Yearbirth { set; get; }
-        public List<Books> Books { set; get; }
+
+
+        internal void AddAuthors(Authors? authors)
+        {
+            throw new NotImplementedException();
+        }
 
 
         public Authors(int Id, string Surname, string Name, int Yearbirth)
@@ -21,7 +26,6 @@ namespace Kamalova_LR2B.Models
             this.Surname = Surname;
             this.Name = Name;
             this.Yearbirth = Yearbirth;
-           // this.Books = Books;
         }
 
     }
