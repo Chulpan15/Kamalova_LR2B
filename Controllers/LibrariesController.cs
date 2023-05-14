@@ -162,28 +162,6 @@ namespace Kamalova_LR2B.Controllers
         //}
 
 
-
-        //[HttpGet("GetRequestsByTitle")]
-        //public async Task<ActionResult<IEnumerable<Library>>> GetRequests(string Title)
-        //{
-        //    if (_context.Library == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    //var result = await _context.Books.Include(b => b.Author).FirstOrDefaultAsync(b => b.Title == Title);
-        //    var results = await _context.Library
-        //        .Where(b => b. == Title)
-        //        .Include(b => b.Author)
-        //        .ToListAsync();
-
-        //    if (results == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return results;
-        //}
     }
 
 }
