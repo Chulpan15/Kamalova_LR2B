@@ -19,7 +19,7 @@ namespace Kamalova_LR2B.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Library>().HasMany(lib => lib.authors).WithMany();
+            modelBuilder.Entity<Library>().HasMany(lib => lib.Books).WithMany();
         }
 
         public DbSet<Kamalova_LR2B.Models.Authors> Authors { get; set; }

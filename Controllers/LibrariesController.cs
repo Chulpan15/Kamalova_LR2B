@@ -25,15 +25,15 @@ namespace Kamalova_LR2B.Controllers
         }
 
         // GET: api/Library
-        [HttpGet]
-        //public async Task<ActionResult<IEnumerable<Library>>> GetLibrary()
-        //{
-        //    if (_context.Library == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return await _context.Library.Include(a => a.Surname).ToListAsync();
-        //}
+        //[HttpGet]
+        // public async Task<ActionResult<IEnumerable<Library>>> GetLibrary()
+        // {
+        //     if (_context.Library == null)
+        //     {
+        //         return NotFound();
+        //     }
+        //     return await _context.Library.Include(a => a.Surname).ToListAsync();
+        // }
 
         // GET: api/Library/5
         [HttpGet("{id}")]
@@ -58,7 +58,7 @@ namespace Kamalova_LR2B.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutLibrary(int id, Library library)
         {
-            if (id != library.Id)
+            if (id != library.id)
             {
                 return BadRequest();
             }
@@ -93,11 +93,11 @@ namespace Kamalova_LR2B.Controllers
             {
                 return Problem("Entity set 'LibraryContext.Library'  is null.");
             }
-            var libraryy = new Library(library.Id, library.authors, library.Books);
+            var libraryy = new Library(library.authors, library.Books);
             _context.Library.Add(libraryy);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetLibrary", new { id = library.Id }, library);
+            return CreatedAtAction("GetLibrary", new { id = library.id }, library);
         }
 
         // DELETE: api/Library/5
@@ -122,7 +122,7 @@ namespace Kamalova_LR2B.Controllers
 
         private bool LibraryExists(int id)
         {
-            return (_context.Library?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Library?.Any(e => e.id == id)).GetValueOrDefault();
         }
 
 
@@ -161,23 +161,29 @@ namespace Kamalova_LR2B.Controllers
         //    return NoContent();
         //}
 
-        //[HttpGet("GetRequestsGroupByAuthor")]
-        //public async Task<ActionResult<IEnumerable<Library>>> GetRequest(string Title)
+
+
+        //[HttpGet("GetRequestsByTitle")]
+        //public async Task<ActionResult<IEnumerable<Library>>> GetRequests(string Title)
         //{
         //    if (_context.Library == null)
         //    {
         //        return NotFound();
         //    }
-        //    var request = _context.Library.Include(l => l.Books).ToList();
 
-        //    if (request == null)
+        //    //var result = await _context.Books.Include(b => b.Author).FirstOrDefaultAsync(b => b.Title == Title);
+        //    var results = await _context.Library
+        //        .Where(b => b. == Title)
+        //        .Include(b => b.Author)
+        //        .ToListAsync();
+
+        //    if (results == null)
         //    {
         //        return NotFound();
         //    }
 
-        //    return request;
+        //    return results;
         //}
-
     }
 
 }

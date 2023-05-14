@@ -39,23 +39,47 @@ namespace Kamalova_LR2B.Controllers
             return await _context.Books.ToListAsync();
         }
 
-        // GET: api/Books/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Books>> GetBooks(int id)
-        {
-          if (_context.Books == null)
-          {
-              return NotFound();
-          }
-            var books = await _context.Books.FindAsync(id);
+        //// GET: api/Books/5
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Books>> GetBooks(int id)
+        //{
+        //    if (_context.Books == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var books = await _context.Books.FindAsync(id);
+        //    // var bookss = _context.Books.Include(b => b.Title).Where(r => r.ID == id).ToList();
 
-            if (books == null)
-            {
-                return NotFound();
-            }
+        //    if (books == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return books;
-        }
+        //    return books;
+        //}
+
+        //[HttpGet("GetRequestsByTitle")]
+        //public async Task<ActionResult<IEnumerable<Books>>> GetRequests(string Title)
+        //{
+        //    if (_context.Books == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    //var result = await _context.Books.Include(b => b.Author).FirstOrDefaultAsync(b => b.Title == Title);
+        //    var results = await _context.Books
+        //        .Where(b => b.Books.Title == Title)
+        //        .Include(b => b.Author)
+        //        .ToListAsync();
+
+        //    if (results == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return results;
+        //}
+
 
         // PUT: api/Books/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -129,5 +153,31 @@ namespace Kamalova_LR2B.Controllers
         {
             return (_context.Books?.Any(e => e.ID == id)).GetValueOrDefault();
         }
+
+
+        // GET: api/Books/Title
+        [HttpGet("{Title}")]
+        public async Task<ActionResult<IEnumerable<Books>>> GetBooksByTitle(string title)
+        {
+            if (_context.Books == null)
+            {
+                return NotFound();
+            }
+            var bookss = await _context.Books
+                .Where(b => b.Title == title)
+                .Include(b => b.Author)
+                .ToListAsync();
+
+            if (bookss == null)
+            {
+                return NotFound();
+            }
+
+            return bookss;
+        }
+
+
+
+
     }
 }

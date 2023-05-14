@@ -9,14 +9,16 @@ namespace Kamalova_LR2B.Mocks
 {
     //public class MockAuthors : IAuthors
     //{
-    //    //public IEnumerable<Authors> AllAuthors {
-    //    //    get {
-    //    //        return new List<Authors>
-    //    //        {
-    //    //            new Authors { Surname = "Пушкин", Name = "Александр"},
-    //    //            new Authors { Surname = "Булгаков", Name = "Михаил"}
-    //    //        };
-    //    //    }
-    //    //}
+    //    public IEnumerable<Authors> AllAuthors
+    //    {
+    //        get
+    //        {
+    //            return new List<Authors>
+    //            {
+    //               // new Authors { Surname = "Пушкин", Name = "Александр"},
+    //               // new Authors { Surname = "Булгаков", Name = "Михаил"}
+    //            };
+    //        }
+    //    }
     //}
 }

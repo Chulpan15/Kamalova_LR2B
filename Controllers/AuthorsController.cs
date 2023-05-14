@@ -98,8 +98,8 @@ namespace Kamalova_LR2B.Controllers
           {
               return Problem("Entity set 'LibraryContext.Authors'  is null.");
             }
-            var authorss = new Authors(authors.Id, authors.Surname, authors.Name, authors.Yearbirth);
-            _context.Authors.Add(authorss);
+           var authorss = new Authors(authors.Id, authors.Surname, authors.Name, authors.Yearbirth);
+           _context.Authors.Add(authorss);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAuthors", new { id = authors.Id }, authors);
@@ -129,5 +129,28 @@ namespace Kamalova_LR2B.Controllers
         {
             return (_context.Authors?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+
+        //[HttpGet("GetRequestsByAuthor")]
+        //public async Task<ActionResult<IEnumerable<Authors>>> GetRequests(string Surname, int )
+        //{
+        //    if (_context.Books == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    //var result = await _context.Books.Include(b => b.Author).FirstOrDefaultAsync(b => b.Title == Title);
+        //    var results = await _context.Books
+        //        .Where(b => b.Title == Title)
+        //        .Include(b => b.Author)
+        //        .ToListAsync();
+
+        //    if (results == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return results;
+        //}
     }
 }

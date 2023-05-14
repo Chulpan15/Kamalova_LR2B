@@ -11,29 +11,32 @@ namespace Kamalova_LR2B.Models
 {
     public class Library
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public IList<Authors>? authors { get; set; }
-
         public IList<Books>? Books { get; set; }
 
         public Library()
         {
             Books = new List<Books>();
+            authors = new List<Authors>();
         }
 
-        public Library(int id, IList<Authors>? authors, IList<Books>? books)
+        public Library(IList<Authors>? authors, IList<Books>? books)
         {
-            Id = id;
-            //Authors = authors;
+            this.id = id;
+            this.authors = authors;
             Books = books;
-          //  Author = authors;
-            //{
-            //    Id = Id,
-            //    Surname = Surname,
-            //    Name = Name,
-            //    Yearbirth = Yearbirth
-            //};
         }
+
+
+
+        //public Library(int id, IList<Authors>? authors, IList<Books>? books)
+        //{
+        //    this.id = id;
+        //    authors = authors;
+        //    Books = books;
+        //}
+
 
         //public void AddAuthors(Authors authors)
         //{
